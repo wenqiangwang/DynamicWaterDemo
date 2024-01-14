@@ -1,9 +1,10 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://fl0u8tyfinyu"]
 
-[ext_resource path="res://assets/shaders/water.shader" type="Shader" id=1]
+[ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_4k3pk"]
 
 [resource]
 resource_local_to_scene = true
-shader = ExtResource( 1 )
-shader_param/water_color = Color( 0.0901961, 0.533333, 0.380392, 1 )
-shader_param/amplitude = null
+render_priority = 0
+shader = ExtResource("1_4k3pk")
+shader_parameter/water_color = Color(0, 0.596078, 0.933333, 1)
+shader_parameter/amplitude = null

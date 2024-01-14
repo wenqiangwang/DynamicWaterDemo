@@ -1,13 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=2]
-
-[ext_resource path="res://assets/shaders/collision.shader" type="Shader" id=1]
-
-[sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0, 0, 0, 1 )
+[gd_resource type="ShaderMaterial" format=3 uid="uid://py4q4vby0mno"]
 
 [resource]
 resource_local_to_scene = true
-render_priority = 1
-next_pass = SubResource( 1 )
-shader = ExtResource( 1 )
-shader_param/speed = null

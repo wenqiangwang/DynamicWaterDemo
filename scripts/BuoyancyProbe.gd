@@ -6,10 +6,10 @@
 # near the water surface.
 # There is also a dampening factor to prevent instabilities.
 
-extends Spatial
+extends Node3D
 
-export var buoyancy = 5.0
-export var drag = 0.18 # Drag factor (total dampening is buoyancy*dampening)
+@export var buoyancy = 5.0
+@export var drag = 0.18 # Drag factor (total dampening is buoyancy*dampening)
 
 var water_node : Node
 
@@ -19,18 +19,18 @@ var velocity = Vector3(0.0, 0.0, 0.0)
 var old_pos = Vector3(0.0, 0.0, 0.0)
 
 func _physics_process(delta):
-	if water_node:
-		# Approximate the current velocity (needed for drag)
-		var pos = global_transform.origin
-		velocity = (pos - old_pos) / delta
-		old_pos = pos
+    if water_node:
+        # Approximate the current velocity (needed for drag)
+        var pos = global_transform.origin
+        velocity = (pos - old_pos) / delta
+        old_pos = pos
 
-		# Get height of water at current position and calculate
-		# the current displacement.
-		var h = water_node.get_height(global_transform.origin)
-		var disp = global_transform.origin.y - h
-		if (disp < 0):
-			force = buoyancy*(-disp - drag * velocity.y)
-		else:
-			# No force if above water
-			force = 0.0
+        # Get height of water at current position and calculate
+        # the current displacement.
+        var h = water_node.get_height(global_transform.origin)
+        var disp = global_transform.origin.y - h
+        if (disp < 0):
+            force = buoyancy*(-disp - drag * velocity.y)
+        else:
+            # No force if above water
+            force = 0.0

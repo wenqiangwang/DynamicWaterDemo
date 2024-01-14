@@ -2,7 +2,7 @@ shader_type spatial;
 
 render_mode specular_toon;
 
-uniform vec4 water_color : hint_color;
+uniform vec4 water_color : source_color;
 uniform sampler2D simulation_texture;
 uniform sampler2D collision_texture;
 uniform float amplitude;
@@ -23,7 +23,7 @@ void fragment() {
 		float height = tex.r - tex.g;
 		float height_dx = tex_dx.r - tex_dx.g;
 		float height_dy = tex_dy.r - tex_dy.g;
-		NORMAL = COLOR.r * normalize(mat3(INV_CAMERA_MATRIX)*(vec3(height_dx - height, 1.0, height_dx - height) / 0.01)) + (1.0f - COLOR.r) * NORMAL;
+		NORMAL = COLOR.r * normalize(mat3(VIEW_MATRIX)*(vec3(height_dx - height, 1.0, height_dx - height) / 0.01)) + (1.0f - COLOR.r) * NORMAL;
 	}
 	
 	float fresnel = sqrt(1.0 - dot(NORMAL, VIEW));
